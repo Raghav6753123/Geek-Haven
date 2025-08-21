@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import valdator from "validator"
-import axios from 'axios';
+import api from '../api';
 import { useAuth } from '../AuthContext/authContext';
 import { useNavigate } from 'react-router-dom';
 const SignIn = ({ setActiveForm }) => {
@@ -28,7 +28,7 @@ const SignIn = ({ setActiveForm }) => {
       return;
     }
 
-    await axios.post(`api/auth/login`, { email, password }).then((res) => {
+  await api.post('/api/auth/login', { email, password }).then((res) => {
       setOtp(res.data.EncryptedOtp);
       localStorage.setItem("isValid",true);
       setAuthuser(true);

@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from '../api';
 import { createContext, useContext, useEffect, useState } from "react";
 
 const QuestionContext = createContext();
@@ -7,7 +7,7 @@ export const QuestionProvider =  ({children}) => {
     useEffect(() => {
         const FetchQuestions = async () => {
             try {
-                await axios.get("/api/ques/get-ques").then((res) => {
+                await api.get("/api/ques/get-ques").then((res) => {
                     SetQuestions(res.data.ques);
                     
                 })

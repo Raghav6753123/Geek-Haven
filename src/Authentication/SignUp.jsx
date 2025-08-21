@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import validator from 'validator';
-import axios from 'axios';
+import api from '../api';
 import { useAuth } from '../AuthContext/authContext';
 import { useNavigate } from 'react-router-dom';
 const SignUp = ({ setActiveForm }) => {
@@ -43,7 +43,7 @@ const SignUp = ({ setActiveForm }) => {
     if (!valid) return;
 
     try {
-      const res = await axios.post('/api/auth/register', {
+  const res = await api.post('/api/auth/register', {
         email,
         password,
         name: email.split('@')[0],

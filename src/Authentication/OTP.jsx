@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import axios from 'axios';
+import api from '../api';
 import validator from 'validator';
 import AOS from 'aos';
 import bcrypt from 'bcryptjs';
@@ -31,7 +31,7 @@ const OTP = ({ setActiveForm }) => {
       return;
     }
     try {
-      const res = await axios.post('api/auth/login-otp', { email });
+  const res = await api.post('/api/auth/login-otp', { email });
       setOtp(res.data.EncryptedOtp);
       setShowOtp(true);
       setjwt(res.data.token);
